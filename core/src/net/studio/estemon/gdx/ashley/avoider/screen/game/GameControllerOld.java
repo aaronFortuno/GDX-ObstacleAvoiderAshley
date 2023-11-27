@@ -19,7 +19,8 @@ import net.studio.estemon.gdx.ashley.avoider.entity.Obstacle;
 import net.studio.estemon.gdx.ashley.avoider.entity.Player;
 
 @SuppressWarnings("ALL")
-public class GameController {
+@Deprecated
+public class GameControllerOld {
 
     // constants
 
@@ -41,7 +42,7 @@ public class GameController {
     private final AssetManager assetManager;
 
     // constructor
-    public GameController(ObstacleAvoiderGame game) {
+    public GameControllerOld(ObstacleAvoiderGame game) {
         assetManager = game.getAssetManager();
         init();
     }

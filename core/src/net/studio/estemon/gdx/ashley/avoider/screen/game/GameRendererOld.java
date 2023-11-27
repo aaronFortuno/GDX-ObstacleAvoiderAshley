@@ -26,7 +26,8 @@ import net.studio.estemon.gdx.ashley.avoider.util.ViewportUtils;
 import net.studio.estemon.gdx.ashley.avoider.util.debug.DebugCameraController;
 
 @SuppressWarnings("ALL")
-public class GameRenderer implements Disposable {
+@Deprecated
+public class GameRendererOld implements Disposable {
 
     // attributes
     private OrthographicCamera camera;
@@ -38,7 +39,7 @@ public class GameRenderer implements Disposable {
     private BitmapFont font;
     private final GlyphLayout layout = new GlyphLayout();
     private DebugCameraController debugCameraController;
-    private final GameController controller;
+    private final GameControllerOld controller;
     private final AssetManager assetManager;
     private final SpriteBatch batch;
 
@@ -48,7 +49,7 @@ public class GameRenderer implements Disposable {
 
 
     // constructor
-    public GameRenderer(SpriteBatch batch, AssetManager assetManager, GameController controller) {
+    public GameRendererOld(SpriteBatch batch, AssetManager assetManager, GameControllerOld controller) {
         this.batch = batch;
         this.assetManager = assetManager;
         this.controller = controller;
