@@ -14,6 +14,7 @@ import net.studio.estemon.gdx.ashley.avoider.config.GameConfig;
 import net.studio.estemon.gdx.ashley.avoider.screen.menu.MenuScreen;
 import net.studio.estemon.gdx.ashley.avoider.system.BoundsSystem;
 import net.studio.estemon.gdx.ashley.avoider.system.MovementSystem;
+import net.studio.estemon.gdx.ashley.avoider.system.ObstacleSpawnSystem;
 import net.studio.estemon.gdx.ashley.avoider.system.PlayerSystem;
 import net.studio.estemon.gdx.ashley.avoider.system.WorldWrapSystem;
 import net.studio.estemon.gdx.ashley.avoider.system.debug.DebugCameraSystem;
@@ -53,6 +54,8 @@ public class GameScreen implements Screen {
         engine.addSystem(new MovementSystem());
         engine.addSystem(new WorldWrapSystem(viewport));
         engine.addSystem(new BoundsSystem());
+        engine.addSystem(new ObstacleSpawnSystem(factory));
+
         engine.addSystem(new DebugRenderSystem(viewport, renderer));
 
         factory.addPlayer();

@@ -14,7 +14,7 @@ import java.util.Map;
 public class MovementSystem extends IteratingSystem{
 
     private static final Family FAMILY = Family.all(
-            PlayerComponent.class,
+            PositionComponent.class,
             MovementComponent.class
     ).get();
 
