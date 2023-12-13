@@ -5,6 +5,7 @@ import com.badlogic.gdx.Preferences;
 
 import net.studio.estemon.gdx.ashley.avoider.ObstacleAvoiderGame;
 import net.studio.estemon.gdx.ashley.avoider.config.DifficultyLevel;
+import net.studio.estemon.gdx.ashley.avoider.config.GameConfig;
 
 public class GameManager {
 
@@ -14,6 +15,8 @@ public class GameManager {
     private final Preferences PREFS;
     private int highscore;
     private DifficultyLevel difficultyLevel;
+    private int lives = GameConfig.LIVES_START;
+    private int score;
 
     // SINGLETON, not instantiable
     private GameManager() {
@@ -39,6 +42,10 @@ public class GameManager {
     public DifficultyLevel getDifficultyLevel() {
         return difficultyLevel;
     }
+
+    public int getLives() { return lives; }
+
+    public int getScore() { return score; }
 
     public void updateDifficulty(DifficultyLevel newDifficultyLevel) {
         if (difficultyLevel == newDifficultyLevel) {
