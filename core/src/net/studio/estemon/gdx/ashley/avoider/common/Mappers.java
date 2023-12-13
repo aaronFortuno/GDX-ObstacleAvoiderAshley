@@ -4,6 +4,7 @@ import com.badlogic.ashley.core.ComponentMapper;
 
 import net.studio.estemon.gdx.ashley.avoider.component.BoundsComponent;
 import net.studio.estemon.gdx.ashley.avoider.component.MovementComponent;
+import net.studio.estemon.gdx.ashley.avoider.component.ObstacleComponent;
 import net.studio.estemon.gdx.ashley.avoider.component.PositionComponent;
 
 public class Mappers {
@@ -18,4 +19,7 @@ public class Mappers {
 
     public static final ComponentMapper<PositionComponent> POSITION =
             ComponentMapper.getFor(PositionComponent.class);
+
+    public static final ComponentMapper<ObstacleComponent> OBSTACLE =
+            ComponentMapper.getFor(ObstacleComponent.class);
 }

@@ -4,7 +4,9 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
 
 import net.studio.estemon.gdx.ashley.avoider.component.BoundsComponent;
+import net.studio.estemon.gdx.ashley.avoider.component.CleanUpComponent;
 import net.studio.estemon.gdx.ashley.avoider.component.MovementComponent;
+import net.studio.estemon.gdx.ashley.avoider.component.ObstacleComponent;
 import net.studio.estemon.gdx.ashley.avoider.component.PlayerComponent;
 import net.studio.estemon.gdx.ashley.avoider.component.PositionComponent;
 import net.studio.estemon.gdx.ashley.avoider.component.WorldWrapComponent;
@@ -56,10 +58,16 @@ public class EntityFactory {
         position.x = x;
         position.y = y;
 
+        CleanUpComponent cleanUp = engine.createComponent(CleanUpComponent.class);
+
+        ObstacleComponent obstacle = engine.createComponent(ObstacleComponent.class);
+
         Entity entity = engine.createEntity();
         entity.add(bounds);
         entity.add(movement);
         entity.add(position);
+        entity.add(cleanUp);
+        entity.add(obstacle);
 
         engine.addEntity(entity);
     }

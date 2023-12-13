@@ -13,10 +13,12 @@ import net.studio.estemon.gdx.ashley.avoider.common.EntityFactory;
 import net.studio.estemon.gdx.ashley.avoider.config.GameConfig;
 import net.studio.estemon.gdx.ashley.avoider.screen.menu.MenuScreen;
 import net.studio.estemon.gdx.ashley.avoider.system.BoundsSystem;
+import net.studio.estemon.gdx.ashley.avoider.system.CleanUpSystem;
 import net.studio.estemon.gdx.ashley.avoider.system.MovementSystem;
 import net.studio.estemon.gdx.ashley.avoider.system.ObstacleSpawnSystem;
 import net.studio.estemon.gdx.ashley.avoider.system.PlayerSystem;
 import net.studio.estemon.gdx.ashley.avoider.system.WorldWrapSystem;
+import net.studio.estemon.gdx.ashley.avoider.system.collision.CollisionSystem;
 import net.studio.estemon.gdx.ashley.avoider.system.debug.DebugCameraSystem;
 import net.studio.estemon.gdx.ashley.avoider.system.debug.DebugRenderSystem;
 import net.studio.estemon.gdx.ashley.avoider.system.debug.GridRendererSystem;
@@ -46,7 +48,6 @@ public class GameScreen implements Screen {
         engine = new PooledEngine();
         factory = new EntityFactory(engine);
 
-        engine.addSystem(new GridRendererSystem(viewport, renderer));
         engine.addSystem(new DebugCameraSystem(camera,
                 GameConfig.WORLD_CENTER_X, GameConfig.WORLD_CENTER_Y
         ));
@@ -55,7 +56,10 @@ public class GameScreen implements Screen {
         engine.addSystem(new WorldWrapSystem(viewport));
         engine.addSystem(new BoundsSystem());
         engine.addSystem(new ObstacleSpawnSystem(factory));
+        engine.addSystem(new CleanUpSystem());
+        engine.addSystem(new CollisionSystem());
 
+        engine.addSystem(new GridRendererSystem(viewport, renderer));
         engine.addSystem(new DebugRenderSystem(viewport, renderer));
 
         factory.addPlayer();
