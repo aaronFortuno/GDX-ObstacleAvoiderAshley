@@ -32,8 +32,8 @@ public class EntityFactory {
     }
 
     public void addPlayer() {
-        float x = GameConfig.WORLD_WIDTH / 2f;
-        float y = GameConfig.PLAYER_SIZE;
+        float x = (GameConfig.WORLD_WIDTH - GameConfig.PLAYER_SIZE) / 2f;
+        float y = 1 - GameConfig.PLAYER_SIZE / 2f;
 
         PositionComponent position = engine.createComponent(PositionComponent.class);
         position.x = x;

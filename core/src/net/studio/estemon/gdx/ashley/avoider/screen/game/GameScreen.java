@@ -36,6 +36,8 @@ import net.studio.estemon.gdx.ashley.avoider.util.GdxUtils;
 
 public class GameScreen implements Screen {
 
+    private static final boolean DEBUG = false;
+
     private final ObstacleAvoiderGame game;
     private final AssetManager assetManager;
 
@@ -78,9 +80,6 @@ public class GameScreen implements Screen {
             }
         };
 
-        engine.addSystem(new DebugCameraSystem(camera,
-                GameConfig.WORLD_CENTER_X, GameConfig.WORLD_CENTER_Y
-        ));
         engine.addSystem(new PlayerSystem());
         engine.addSystem(new MovementSystem());
         engine.addSystem(new WorldWrapSystem(viewport));
@@ -91,8 +90,14 @@ public class GameScreen implements Screen {
         engine.addSystem(new ScoreSystem());
 
         engine.addSystem(new RenderSystem(viewport, game.getBatch()));
-        engine.addSystem(new GridRendererSystem(viewport, renderer));
-        engine.addSystem(new DebugRenderSystem(viewport, renderer));
+
+        if (DEBUG) {
+            engine.addSystem(new GridRendererSystem(viewport, renderer));
+            engine.addSystem(new DebugRenderSystem(viewport, renderer));
+            engine.addSystem(new DebugCameraSystem(camera,
+                    GameConfig.WORLD_CENTER_X, GameConfig.WORLD_CENTER_Y
+            ));
+        }
 
         engine.addSystem(new HudRenderSystem(hudViewport, game.getBatch(), font));
 
