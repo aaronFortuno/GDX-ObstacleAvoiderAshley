@@ -26,7 +26,7 @@ public class GameManager {
         difficultyLevel = DifficultyLevel.valueOf(difficultyName);
     }
 
-    public void updateHighscore(int score) {
+    public void updateHighscore() {
         if (score < highscore) {
             return;
         }
@@ -41,6 +41,17 @@ public class GameManager {
 
     public DifficultyLevel getDifficultyLevel() {
         return difficultyLevel;
+    }
+
+    public void updateScore(int amount) { score += amount; }
+
+    public void decrementLives() { lives--; }
+
+    public boolean isGameOver() { return lives <= 0; }
+
+    public void reset() {
+        lives = GameConfig.LIVES_START;
+        score = 0;
     }
 
     public int getLives() { return lives; }

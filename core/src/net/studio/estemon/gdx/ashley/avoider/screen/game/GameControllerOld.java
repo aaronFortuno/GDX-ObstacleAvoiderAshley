@@ -88,7 +88,7 @@ public class GameControllerOld {
             lives--;
 
             if (isGameOver()) {
-                GameManager.INSTANCE.updateHighscore(score);
+                // GameManager.INSTANCE.updateHighscore(score);
             }
         }
     }
